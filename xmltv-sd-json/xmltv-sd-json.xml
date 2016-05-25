@@ -23,18 +23,25 @@
   </Networking>
   <Data>
     <Volume>
-      <HostDir>/mnt/cache/appdata/pints/www</HostDir>
-      <ContainerDir>/var/www/Pints</ContainerDir>
+      <HostDir>/mnt/cache/appdata/WebGrabPlusPlus</HostDir>
+      <ContainerDir>/config</ContainerDir>
       <Mode>rw</Mode>
     </Volume>
     <Volume>
-      <HostDir>/mnt/cache/appdata/epg/</HostDir>
+      <HostDir>/mnt/user</HostDir>
+      <ContainerDir>/unraid</ContainerDir>
+      <Mode>rw</Mode>
+    </Volume>
+    <Volume>
+      <HostDir>/mnt/cache/appdata/TVGuide</HostDir>
       <ContainerDir>/data</ContainerDir>
       <Mode>rw</Mode>
     </Volume>
   </Data>
   <Banner>https://raw.githubusercontent.com/balloob/unraid-docker-templates/master/balloob/home-assistant-banner.png</Banner>
   <Icon>https://raw.githubusercontent.com/balloob/unraid-docker-templates/master/balloob/home-assistant-icon.png</Icon>
-  <Config Name="Config Directory" Target="/config" Default="/mnt/cache/appdata/xmltv-sd-json" Mode="rw" Description="This path is where Home Assistant will store it's configuration files." Type="Path" Display="always" Required="true" Mask="false"/>
+  <Config Name="Path 1" Target="/data" Default="/mnt/cache/appdata/data/" Mode="rw" Description="Container Path: /data" Type="Path" Display="always" Required="true" Mask="false">/mnt/cache/appdata/TVGuide</Config>
+  <Config Name="unRAID Share Path" Target="/unraid" Default="/mnt/user" Mode="rw" Description="Container Path: /unraid" Type="Path" Display="hidden" Required="false" Mask="false">/mnt/user</Config>
+  <Config Name="AppData Config Path" Target="/config" Default="/mnt/cache/appdata/xmltv-sd-json" Mode="rw" Description="Container Path: /config" Type="Path" Display="advanced-hide" Required="true" Mask="false">/mnt/cache/appdata/WebGrabPlusPlus</Config>
 </Container>
 
