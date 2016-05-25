@@ -40,5 +40,6 @@
   </Data>
   <Banner>https://raw.githubusercontent.com/balloob/unraid-docker-templates/master/balloob/home-assistant-banner.png</Banner>
   <Icon>https://raw.githubusercontent.com/balloob/unraid-docker-templates/master/balloob/home-assistant-icon.png</Icon>
+  <Config Name="Config Directory" Target="/config" Default="/mnt/cache/appdata/xmltv-sd-json" Mode="rw" Description="This path is where Home Assistant will store it's configuration files." Type="Path" Display="always" Required="true" Mask="false"/>
 </Container>
 
