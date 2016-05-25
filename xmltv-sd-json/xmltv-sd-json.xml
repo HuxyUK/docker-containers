@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Container version="2">
+  <Beta>False</Beta>
+  <Category>Media Applications:</Category>
+  <Name>XMLTV Schedules Direct / JSON</Name>
+  <Overview>Provides XMLTV installation with a JSON schedules direct script installed.</Overview>
+  <license>MIT</license>
+  <Project>https://sourceforge.net/projects/xmltv/</Project>
+  <Support>https://sourceforge.net/projects/xmltv/</Support>
+  <Description>
+    Eeek!.[br][br]
+    [b][span style='color: #E80000;']Directions:[/span][/b][br]
+    [b]/config[/b] : in this path, Home Assistant will store it's configuration files.
+  </Description>
+  <Registry>https://registry.hub.docker.com/u/homeassistant/home-assistant/</Registry>
+  <GitHub>github.com/HuxyUK/docker-containers/xmltv-sd-json</GitHub>
+  <Repository>homeassistant/home-assistant</Repository>
+  <BindTime>true</BindTime>
+  <Privileged>false</Privileged>
+  <Environment/>
+  <Networking>
+    <Mode>host</Mode>
+    <Publish />
+  </Networking>
+  <Data>
+    <Volume>
+      <HostDir>/mnt/cache/appdata/xmltv-sd-json/</HostDir>
+      <ContainerDir>/config</ContainerDir>
+      <Mode>rw</Mode>
+    </Volume>
+	<Volume>
+      <HostDir>/mnt/cache/appdata/epg/</HostDir>
+      <ContainerDir>/data</ContainerDir>
+      <Mode>rw</Mode>
+    </Volume>
+  </Data>
+  <Banner>https://raw.githubusercontent.com/balloob/unraid-docker-templates/master/balloob/home-assistant-banner.png</Banner>
+  <Icon>https://raw.githubusercontent.com/balloob/unraid-docker-templates/master/balloob/home-assistant-icon.png</Icon>
+</Container>
+
