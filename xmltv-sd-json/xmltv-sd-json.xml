@@ -2,7 +2,7 @@
 <Container version="2">
   <Beta>False</Beta>
   <Category>Media Applications:</Category>
-  <Name>XMLTV Schedules Direct (JSON)</Name>
+  <Name>XMLTV Schedules Direct</Name>
   <Overview>Provides XMLTV installation with a JSON schedules direct script installed.</Overview>
   <license>MIT</license>
   <Project>https://sourceforge.net/projects/xmltv/</Project>
