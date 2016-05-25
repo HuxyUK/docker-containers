@@ -12,7 +12,6 @@
     [b][span style='color: #E80000;']Directions:[/span][/b][br]
     [b]/config[/b] : in this path, Home Assistant will store it's configuration files.
   </Description>
-  <Registry>https://registry.hub.docker.com/u/homeassistant/home-assistant/</Registry>
   <GitHub>github.com/HuxyUK/docker-containers/xmltv-sd-json</GitHub>
   <Repository>homeassistant/home-assistant</Repository>
   <BindTime>true</BindTime>
