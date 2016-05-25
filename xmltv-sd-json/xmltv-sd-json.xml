@@ -28,11 +28,6 @@
       <Mode>rw</Mode>
     </Volume>
     <Volume>
-      <HostDir>/mnt/cache/appdata/xmltv-sd-json</HostDir>
-      <ContainerDir>/config</ContainerDir>
-      <Mode>rw</Mode>
-    </Volume>
-    <Volume>
       <HostDir>/mnt/cache/appdata/epg/</HostDir>
       <ContainerDir>/data</ContainerDir>
       <Mode>rw</Mode>
