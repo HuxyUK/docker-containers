@@ -23,8 +23,8 @@
   </Networking>
   <Data>
     <Volume>
-      <HostDir>/mnt/cache/appdata/WebGrabPlusPlus</HostDir>
-      <ContainerDir>/config</ContainerDir>
+      <HostDir>/mnt/cache/appdata/xmltv-sd-json</HostDir>
+      <ContainerDir>/root/.xmltv</ContainerDir>
       <Mode>rw</Mode>
     </Volume>
     <Volume>
@@ -42,6 +42,6 @@
   <Icon>https://raw.githubusercontent.com/balloob/unraid-docker-templates/master/balloob/home-assistant-icon.png</Icon>
   <Config Name="Path 1" Target="/data" Default="/mnt/cache/appdata/data/" Mode="rw" Description="Container Path: /data" Type="Path" Display="always" Required="true" Mask="false">/mnt/cache/appdata/TVGuide</Config>
   <Config Name="unRAID Share Path" Target="/unraid" Default="/mnt/user" Mode="rw" Description="Container Path: /unraid" Type="Path" Display="hidden" Required="false" Mask="false">/mnt/user</Config>
-  <Config Name="AppData Config Path" Target="/config" Default="/mnt/cache/appdata/xmltv-sd-json" Mode="rw" Description="Container Path: /config" Type="Path" Display="advanced-hide" Required="true" Mask="false">/mnt/cache/appdata/WebGrabPlusPlus</Config>
+  <Config Name="AppData Config Path" Target="/root/.xmltv" Default="/mnt/cache/appdata/xmltv-sd-json" Mode="rw" Description="Container Path: /root/.xmltv" Type="Path" Display="advanced-hide" Required="true" Mask="false">/mnt/cache/appdata/xmltv-sd-json</Config>
 </Container>
 
