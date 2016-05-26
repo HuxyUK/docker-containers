@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Container version="2">
   <Beta>False</Beta>
-  <Category>Media Applications:</Category>
+  <Category>Downloaders:</Category>
   <Name>XMLTV Schedules Direct</Name>
-  <Overview>Provides XMLTV installation with a JSON schedules direct script installed.</Overview>
+  <Overview>Provides an XMLTV installation with a JSON schedules direct script installed.</Overview>
   <license>MIT</license>
+  <Date>2016-05-26</Date>
   <Project>https://sourceforge.net/projects/xmltv/</Project>
   <Support>https://sourceforge.net/projects/xmltv/</Support>
+  <Changes/>
   <Description>
     Eeek!.[br][br]
     [b][span style='color: #E80000;']Directions:[/span][/b][br]
