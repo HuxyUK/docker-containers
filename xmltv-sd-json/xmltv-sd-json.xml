@@ -18,7 +18,7 @@
   <Privileged>false</Privileged>
   <Environment/>
   <Networking>
-    <Mode>host</Mode>
+    <Mode>bridge</Mode>
     <Publish />
   </Networking>
   <Data>
