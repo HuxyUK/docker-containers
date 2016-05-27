@@ -16,13 +16,13 @@
     [b]/config[/b] : This is where XMLTV will store it\'s cache and configuration.[br][br]&#13;
     [b]/data[/b] : This is the output directory for the EPG data that has been scrapped.[br][br]&#13;
     [b][span style='color: #FFCC00 Features:[/span][/b][br]&#13;
-    [b]--[/b] auto runs a grab on startup, with it's own day count i.e. STARTUPDAYS.&#13;
-    [b]--[/b] specify the number of days used when running the grabber script with DAYS.&#13;
-    [b]--[/b] specify the offset used with running the grabber script with OFFSET.&#13;
-    [b]--[/b] specify the grabber used with GRABBER. It will default to tv_grab_sd_json if not specified.&#13;
+    [b]--[/b] Automatically runs a grab on startup, with it's own day count i.e. STARTUPDAYS.[br]&#13;
+    [b]--[/b] Specify the number of days used when running the grabber script with DAYS.[br]&#13;
+    [b]--[/b] Specify the offset used with running the grabber script with OFFSET.[br]&#13;
+    [b]--[/b] Specify the grabber used with GRABBER. It will default to tv_grab_sd_json if not specified.[br][br]&#13;
     [b][span style='color: #FFCC00;']Cron:[/span][/b][br]
-    [b]// custom cron jobs[/b]&#13;
-    At the moment there is a scan that runs at such a time, however, support is enabled to allow custom cron schedules. Just edit the crontab.txt file in the config directory and restart.
+    [b]Custom CRONTAB: [/b]&#13;
+    By default the grabber will run via cron twice a day. This can easily be changed or additional jobs added by editing the cronjobs.txt file in the config directory and restarting.
   </Description>
   <license>MIT</license>
   <Project>https://sourceforge.net/projects/xmltv/</Project>
@@ -111,4 +111,12 @@
       Mask="false"
       Display="advanced"
       Required="false">1</Config>
+  
+  <Changes>
+      [center][img width='155px' src='http://d2631fvi2jdnb6.cloudfront.net/docker/limetech.png'][/center]
+      [center][font size=4]Sync Change Log[/font][/center]
+      
+      [font size=3]2016.05.27[/font]
+      - Initial Release based on Debian Jessie.
+  </Changes>
 </Container>
