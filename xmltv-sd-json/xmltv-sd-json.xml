@@ -4,9 +4,9 @@
   <Beta>False</Beta>
   <Category>Downloaders:</Category>
   <Overview>
-    An XMLTV installation based on Debian with a JSON added grabber for Schedules Direct. [br]This allows use of Schedules Direct for all supported countries.[br]&#13;
-    XMLTV is a set of programs to process TV (tvguide) listings and manage your TV viewing, storing listings in an XML format.[br]&#13;[br]
-    The JSON grabber provided is tv_grab_sd_json. At the moment the images uses the latest version on GitHub, but it has very recently been officially accepted into XMLTV codebase.[br]&#13;
+    An XMLTV installation based on Debian with a JSON added grabber for Schedules Direct. [br]This allows use of Schedules Direct for all supported countries.[br][br];
+    XMLTV is a set of programs to process TV (tvguide) listings and manage your TV viewing, storing listings in an XML format.[br][br]
+    The JSON grabber provided is tv_grab_sd_json. Recently this grabber has been officially accepted into XMLTV codebase.[br]
   </Overview>
   <Description>
     Provides an XMLTV installation with a JSON Schedules Direct script installed.[br]
@@ -46,7 +46,7 @@
     Default="/mnt/user/appdata/XMLTVSchedulesDirect"
     Mode="rw"
     Display="always"
-    Description="Container Path: /config;&#13; This is where the XMLTV configuration reside, including caches and cronjobs."
+    Description="Container Path: /config;&#13; [br]This is where the XMLTV configuration reside, including caches and cronjobs."
     Required="true">/mnt/user/appdata/XMLTVSchedulesDirect</Config>
   <Config
     Type="Path"
