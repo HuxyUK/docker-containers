@@ -3,25 +3,31 @@
   <Name>XMLTV Schedules Direct</Name>
   <Beta>False</Beta>
   <Category>Downloaders:</Category>
-  <Overview>An XMLTV installation based on Debian with a JSON added grabber for Shedules Direct. [br]This allows use of Schedules Direct for all supported countries.[br] 
-  		XMLTV is a set of programs to process TV (tvguide) listings and manage your TV viewing, storing listings in an XML format.[br]
-		The JSON grabber provided is tv_grab_sd_json. At the moment the images uses the latest version on GitHub, but it has very recently been officially accepted into XMLTV codebase.[br]</Overview>
-  <Overview>Provides an XMLTV installation with a JSON schedules direct script installed.</Overview>
+  <Overview>
+    An XMLTV installation based on Debian with a JSON added grabber for Schedules Direct. [br]This allows use of Schedules Direct for all supported countries.[br]
+    XMLTV is a set of programs to process TV (tvguide) listings and manage your TV viewing, storing listings in an XML format.[br]
+    The JSON grabber provided is tv_grab_sd_json. At the moment the images uses the latest version on GitHub, but it has very recently been officially accepted into XMLTV codebase.[br]
+  </Overview>
   <Description>
-		This is a template with pass through of all your DVB Tuners.[br]
-		Tvheadend is a TV streaming server. It's possible to pass through a DVB adapter. Instructions on how to do that is in the support thread. It is compiled with support for HDHomerun.[br]&#13;
-		http://tvheadend.org[br]&#13;
-		[b][span style=\'color: #E80000;\']Directions:[/span][/b][br]&#13;
-		[b]/config[/b] : This is where XMLTV will store it\'s cache and configuration.[br][br]&#13;
-		[b]/data[/b] : This is the output directory for the EPG data that has been scrapped.[br][br]&#13;
-		    Eeek!.[br][br]
-    [b][span style='color: #E80000;']Directions:[/span][/b][br]
-    [b]/config[/b] : in this path, Home Assistant will store it's configuration files.
+    Provides an XMLTV installation with a JSON Schedules Direct script installed.[br]
+    XMLTV is a tool used to generate XML based EPG's. This template is specifically designed for JSON and Schedules Direct.[br]&#13;
+    https://sourceforge.net/projects/xmltv/[br]&#13;
+    [b][span style=\'color: #E80000;\']Directions:[/span][/b][br]&#13;
+    [b]/config[/b] : This is where XMLTV will store it\'s cache and configuration.[br][br]&#13;
+    [b]/data[/b] : This is the output directory for the EPG data that has been scrapped.[br][br]&#13;
+    [b][span style='color: #FFCC00 Features:[/span][/b][br]&#13;
+    [b]--[/b] auto runs a grab on startup, with it's own day count i.e. STARTUPDAYS.&#13;
+    [b]--[/b] specify the number of days used when running the grabber script with DAYS.&#13;
+    [b]--[/b] specify the offset used with running the grabber script with OFFSET.&#13;
+    [b]--[/b] specify the grabber used with GRABBER. It will default to tv_grab_sd_json if not specified.&#13;
+    [b][span style='color: #FFCC00;']Cron:[/span][/b][br]
+    [b]// custom cron jobs[/b]&#13;
+    At the moment there is a scan that runs at such a time, however, support is enabled to allow custom cron schedules. Just edit the crontab.txt file in the config directory and restart.
   </Description>
   <license>MIT</license>
   <Project>https://sourceforge.net/projects/xmltv/</Project>
   <GitHub>github.com/HuxyUK/docker-containers/xmltv-sd-json</GitHub>
-  <Repository>huxy/docker-xmltv-sd-json</Repository>
+  <Repository>huxy/xmltv-sd-json</Repository>
   <Changes/>
   <BindTime>true</BindTime>
   <Privileged>false</Privileged>
@@ -30,38 +36,27 @@
     <Mode>bridge</Mode>
     <Publish />
   </Networking>
-  <Data>
-    <Volume>
-      <HostDir>/mnt/cache/appdata/xmltv-sd-json</HostDir>
-      <ContainerDir>/config</ContainerDir>
-      <Mode>rw</Mode>
-    </Volume>
-    <Volume>
-      <HostDir>/mnt/user</HostDir>
-      <ContainerDir>/unraid</ContainerDir>
-      <Mode>rw</Mode>
-    </Volume>
-    <Volume>
-      <HostDir>/mnt/cache/appdata/TVGuide</HostDir>
-      <ContainerDir>/data</ContainerDir>
-      <Mode>rw</Mode>
-    </Volume>
-  </Data>
   <Version>beta1</Version>
   <Banner>https://raw.githubusercontent.com/balloob/unraid-docker-templates/master/balloob/home-assistant-banner.png</Banner>
   <Icon>https://raw.githubusercontent.com/balloob/unraid-docker-templates/master/balloob/home-assistant-icon.png</Icon>
   <Config Name="Path 1" Target="/data" Default="/mnt/cache/appdata/data/" Mode="rw" Description="Container Path: /data" Type="Path" Display="always" Required="true" Mask="false">/mnt/cache/appdata/TVGuide</Config>
   <Config Name="unRAID Share Path" Target="/unraid" Default="/mnt/user" Mode="rw" Description="Container Path: /unraid" Type="Path" Display="hidden" Required="false" Mask="false">/mnt/user</Config>
   <Config Name="AppData Config Path" Target="/config" Default="/mnt/cache/appdata/xmltv-sd-json" Mode="rw" Description="Container Path: /config" Type="Path" Display="advanced-hide" Required="true" Mask="false">/mnt/cache/appdata/xmltv-sd-json</Config>
-  
-  // talk about variables supported
-  // features
-  -- auto runs a grab on startup, with it's own day count i.e. STARTUPDAYS
-  -- specify the number of days used when running the grabber script with DAYS
-  -- specify the offset used with running the grabber script with OFFSET
-  -- specify the grabber used with GRABBER. It will default to tv_grab_sd_json if not specified. 
-  
-  // custom cron jobs
-  At the moment there is a scan that runs at such a time, however, support is enabled to allow custom cron schedules. Just edit the crontab.txt file in the config directory and restart. 
+  <Config
+    Type="Path"
+    Name="Config directory"
+    Target="/config"
+    Default="/mnt/user/appdata/PMS"
+    Mode="rw"
+    Description="This is where PMS will store it's databases and configuration."
+    Required="true">/mnt/user/appdata/PMS</Config>
+  <Config
+      Type="Variable"
+      Name="Plex Pass Username"
+      Target="PLEXPASS_USERNAME"
+      Default=""
+      Description="Plex Pass Username"
+      Mask="false"
+      Display="advanced"
+      Required="false">Username</Config>
 </Container>
-
