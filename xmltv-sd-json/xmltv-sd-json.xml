@@ -46,7 +46,7 @@
     Default="/mnt/user/appdata/XMLTVSchedulesDirect"
     Mode="rw"
     Display="always"
-    Description="Container Path: /config; This is where the XMLTV configuration reside, including caches and cronjobs."
+    Description="Container Path: /config;&#13; This is where the XMLTV configuration reside, including caches and cronjobs."
     Required="true">/mnt/user/appdata/XMLTVSchedulesDirect</Config>
   <Config
     Type="Path"
@@ -57,6 +57,15 @@
     Display="always"
     Description="Container Path: /data"
     Required="true">/mnt/user/appdata/TVGuideXML</Config>
+  <Config
+    Type="Path"
+    Name="unRAID Share Path"
+    Target="/unraid"
+    Default="/mnt/user"
+    Mode="rw"
+    Display="hidden"
+    Description="Container Path: /unraid"
+    Required="false">/unraid</Config>
   <Config
       Type="Variable"
       Name="Grabber"
