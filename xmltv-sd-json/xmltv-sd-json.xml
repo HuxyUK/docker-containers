@@ -4,9 +4,9 @@
   <Beta>False</Beta>
   <Category>Downloaders:</Category>
   <Overview>
-    An XMLTV installation based on Debian with a JSON added grabber for Schedules Direct. [br]This allows use of Schedules Direct for all supported countries.[br]
+    An XMLTV installation based on Debian with a JSON added grabber for Schedules Direct. [br]This allows use of Schedules Direct for all supported countries.
     XMLTV is a set of programs to process TV (tvguide) listings and manage your TV viewing, storing listings in an XML format.[br][br]
-    The JSON grabber provided is tv_grab_sd_json. Recently this grabber has been officially accepted into the XMLTV project and its codebase.[br]
+    The JSON grabber provided in with this docker is tv_grab_sd_json. Recently, it has been officially accepted into the XMLTV project.[br]
   </Overview>
   <Description>
     Provides an XMLTV installation with a JSON Schedules Direct script installed.[br]
