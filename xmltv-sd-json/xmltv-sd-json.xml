@@ -52,11 +52,11 @@
       Type="Variable"
       Name="Grabber"
       Target="GRABBER"
-      Default=""
+      Default="tv_grab_sd_json"
       Description="XMLTV Grabber to run."
       Mask="false"
       Display="advanced"
-      Required="false"></Config>
+      Required="false">tv_grab_sd_json</Config>
   <Config
       Type="Variable"
       Name="Days To Grab"
@@ -65,23 +65,23 @@
       Description="Number of days to grab when script runs."
       Mask="false"
       Display="advanced"
-      Required="false"></Config>
+      Required="false">1</Config>
   <Config
       Type="Variable"
       Name="Grabber Offset"
       Target="OFFSET"
-      Default=""
+      Default="0"
       Description="Offset to apply when script runs."
       Mask="false"
       Display="advanced"
-      Required="false"></Config>      
+      Required="false">0</Config>      
   <Config
       Type="Variable"
       Name="Days To Grab at Startup"
       Target="STARTUPDAYS"
-      Default=""
+      Default="1"
       Description="Number of days to grab when docker starts."
       Mask="false"
       Display="advanced"
-      Required="false"></Config>
+      Required="false">1</Config>
 </Container>
