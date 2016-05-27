@@ -5,7 +5,7 @@
   <Category>Downloaders:</Category>
   <Overview>
     An XMLTV installation based on Debian with a JSON added grabber for Schedules Direct. [br]This allows use of Schedules Direct for all supported countries.[br]&#13;
-    XMLTV is a set of programs to process TV (tvguide) listings and manage your TV viewing, storing listings in an XML format.[br]&#13;
+    XMLTV is a set of programs to process TV (tvguide) listings and manage your TV viewing, storing listings in an XML format.[br]&#13;[br]
     The JSON grabber provided is tv_grab_sd_json. At the moment the images uses the latest version on GitHub, but it has very recently been officially accepted into XMLTV codebase.[br]&#13;
   </Overview>
   <Description>
@@ -41,7 +41,7 @@
   <Icon>http://ftp.halifax.rwth-aachen.de/xbmc/addons/frodo/script.tvguide/icon.png</Icon>
   <Config
     Type="Path"
-    Name="Config directory"
+    Name="Config Directory"
     Target="/config"
     Default="/mnt/user/appdata/XMLTVSchedulesDirect"
     Mode="rw"
@@ -50,7 +50,7 @@
     Required="true">/mnt/user/appdata/XMLTVSchedulesDirect</Config>
   <Config
     Type="Path"
-    Name="Config directory"
+    Name="EPG Data Directory"
     Target="/data"
     Default="/mnt/user/appdata/TVGuideXML"
     Mode="rw"
