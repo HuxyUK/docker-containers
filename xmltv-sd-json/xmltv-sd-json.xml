@@ -38,7 +38,7 @@
   </Networking>
   <Version>beta1</Version>
   <Banner>https://raw.githubusercontent.com/balloob/unraid-docker-templates/master/balloob/home-assistant-banner.png</Banner>
-  <Icon>https://raw.githubusercontent.com/balloob/unraid-docker-templates/master/balloob/home-assistant-icon.png</Icon>
+  <Icon>http://ftp.halifax.rwth-aachen.de/xbmc/addons/frodo/script.tvguide/icon.png</Icon>
   <Config Name="Path 1" Target="/data" Default="/mnt/cache/appdata/data/" Mode="rw" Description="Container Path: /data" Type="Path" Display="always" Required="true" Mask="false">/mnt/cache/appdata/TVGuide</Config>
   <Config Name="unRAID Share Path" Target="/unraid" Default="/mnt/user" Mode="rw" Description="Container Path: /unraid" Type="Path" Display="hidden" Required="false" Mask="false">/mnt/user</Config>
   <Config Name="AppData Config Path" Target="/config" Default="/mnt/cache/appdata/xmltv-sd-json" Mode="rw" Description="Container Path: /config" Type="Path" Display="advanced-hide" Required="true" Mask="false">/mnt/cache/appdata/xmltv-sd-json</Config>
@@ -46,17 +46,44 @@
     Type="Path"
     Name="Config directory"
     Target="/config"
-    Default="/mnt/user/appdata/PMS"
+    Default="/mnt/user/appdata/XMLTVSchedulesDirect"
     Mode="rw"
-    Description="This is where PMS will store it's databases and configuration."
-    Required="true">/mnt/user/appdata/PMS</Config>
+    Description="Container Path: /config; This is where the XMLTV configuration reside, including caches and cronjobs."
+    Required="true">/mnt/user/appdata/XMLTVSchedulesDirect</Config>
   <Config
       Type="Variable"
-      Name="Plex Pass Username"
-      Target="PLEXPASS_USERNAME"
+      Name="Grabber"
+      Target="GRABBER"
       Default=""
-      Description="Plex Pass Username"
+      Description="XMLTV Grabber to run."
       Mask="false"
       Display="advanced"
-      Required="false">Username</Config>
+      Required="false"></Config>
+  <Config
+      Type="Variable"
+      Name="Days To Grab"
+      Target="DAYS"
+      Default=""
+      Description="Number of days to grab when script runs."
+      Mask="false"
+      Display="advanced"
+      Required="false"></Config>
+  <Config
+      Type="Variable"
+      Name="Grabber Offset"
+      Target="OFFSET"
+      Default=""
+      Description="Offset to apply when script runs."
+      Mask="false"
+      Display="advanced"
+      Required="false"></Config>      
+  <Config
+      Type="Variable"
+      Name="Days To Grab at Startup"
+      Target="STARTUPDAYS"
+      Default=""
+      Description="Number of days to grab when docker starts."
+      Mask="false"
+      Display="advanced"
+      Required="false"></Config>
 </Container>
