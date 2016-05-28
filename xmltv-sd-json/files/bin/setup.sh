@@ -21,6 +21,11 @@ echo ".. Done"
 # Installing TV Grabber Script
 echo "4. Installing JSON script..."
 wget https://raw.githubusercontent.com/kgroeneveld/tv_grab_sd_json/master/tv_grab_sd_json -O /usr/local/bin/tv_grab_sd_json
+rc=$?;
+if [ $rc != 0 ]; then
+  echo "Grabber failed to download. Aborting build..."
+exit $rc;
+fi
 chmod +x /usr/local/bin/tv_grab_sd_json
 echo ".. Done"
 
