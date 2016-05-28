@@ -70,7 +70,7 @@ if [ -s $CRONTAB ]; then
   fi
 else
   echo "Creating default crontab..."
-cat <<'EOF' > /etc/cronjobs.txt
+cat <<'EOF' > ${CRONTAB}
 30 */12 * * * /usr/local/bin/grabber >> /var/log/cron.log 2>&1
 # LEAVE THIS LINE BLANK
 EOF
