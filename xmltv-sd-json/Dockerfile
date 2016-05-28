@@ -1,5 +1,5 @@
 # This is a comment
-FROM debian:jessie
+FROM wingedkiwi/ubuntu-baseimage:latest
 MAINTAINER James Huxtable <docker@codeape.co.uk>
 
 # Set correct environment variables 
