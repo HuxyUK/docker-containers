@@ -1,12 +1,11 @@
 #!/bin/sh
 # start-cron.sh /usr/sbin/cron -f
-
 # variables used in script
-CRONTAB="/root/.xmltv/cronjobs.txt"
+CRONTAB="/config/cronjobs.txt"
 
 if [ -z "$STARTUPDAYS" ]; then
   echo "Using default number of days (1) for scan. This can be overriden with a STARTUPDAYS variable."
-  DAYS=1
+  STARTUPDAYS=1
 fi
 
 if [ -z "$FILENAME" ]; then
@@ -16,7 +15,7 @@ fi
 
 if [ -z "$GRABBER" ]; then
   echo "Using default grabber (tv_grab_sd_json) for scan. This can be overriden with a GRABBER variable."
-  FILENAME="tv_grab_sd_json"
+  GRABBER="tv_grab_sd_json"
 fi
 
 if [ -z "$OFFSET" ]; then
@@ -25,7 +24,7 @@ if [ -z "$OFFSET" ]; then
 fi
 
 # starting weekly grab
-case "$(pidof tv_grab_sd_json | wc -w)" in
+case "$(pidof ${GRABBER} | wc -w)" in
 
 0)  echo "\n"
     echo "Running startup grab:"
@@ -39,7 +38,7 @@ case "$(pidof tv_grab_sd_json | wc -w)" in
         exit 1;
       fi
     else
-      echo "/usr/local/bin/${GRABBER} --days ${DAYS} --output ${FILENAME}"
+      echo "/usr/local/bin/${GRABBER} --days ${STARTUPDAYS} --output ${FILENAME} --offset ${OFFSET}"
       /usr/local/bin/${GRABBER} --days ${STARTUPDAYS} --output /data/${FILENAME} --offset ${OFFSET}
     fi
     ;;
@@ -47,7 +46,15 @@ case "$(pidof tv_grab_sd_json | wc -w)" in
     ;;
 esac
 
+rc=$?;
+if [ $rc != 0 ]; then
+  echo "\n"
+  echo "Grabber failed to run. Check configuration file... /data/${GRABBER}.conf"
+exit $rc;
+fi
+
 #importing custom cron tab if file exists
+echo "Checking for crontab"
 if [ -s $CRONTAB ]; then
   echo "\n"
   echo "Located custom crontab..."
@@ -61,19 +68,16 @@ if [ -s $CRONTAB ]; then
     echo "Failed!!! Check your crontab configuration."
     exit $rc;
   fi
+else
+  echo "Creating default crontab..."
+cat <<'EOF' > /etc/cronjobs.txt
+30 */12 * * * /usr/local/bin/grabber >> /var/log/cron.log 2>&1
+# LEAVE THIS LINE BLANK
+EOF
+  echo "Done"
 fi
 
-# starting cron
+#echo "... Success"
+#touch /var/log/cron.log
+#tail -F /var/log/cron.log
 echo "\n"
-echo "Starting cron daemon:"
-cron
-
-rc=$?;
-if [ $rc != 0 ]; then
-  echo "... Failed!!!"
-  exit $rc;
-fi
-
-echo "... Success"
-touch /var/log/cron.log
-tail -F /var/log/cron.log

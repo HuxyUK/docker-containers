@@ -2,26 +2,26 @@
 # variables used in script
 
 if [ -z "$DAYS" ]; then
-  echo "Using default number of days (1) for initial scan. This can be overriden with a DAYS variable."
+  echo "Using default number of days (1) for scan. This can be overriden with a DAYS variable."
   DAYS=1
 fi
 
 if [ -z "$FILENAME" ]; then
-  echo "Using default filename (epg.xml) for initial scan. This can be overriden with a FILENAME variable."
+  echo "Using default filename (epg.xml) for scan. This can be overriden with a FILENAME variable."
   FILENAME="epg.xml"
 fi
 
 if [ -z "$GRABBER" ]; then
-  echo "Using default grabber (tv_grab_sd_json) for initial scan. This can be overriden with a GRABBER variable."
+  echo "Using default grabber (tv_grab_sd_json) for scan. This can be overriden with a GRABBER variable."
   GRABBER="tv_grab_sd_json"
 fi
 
 if [ -z "$OFFSET" ]; then
-  echo "Using default offset duration (0) for initial scan. This can be overriden with a OFFSET variable."
+  echo "Using default offset duration (0) for scan. This can be overriden with a OFFSET variable."
   OFFSET="0"
 fi
 
-# starting weekly grab
+# starting grab
 case "$(pidof ${GRABBER} | wc -w)" in
 
 0)  echo "\n"
