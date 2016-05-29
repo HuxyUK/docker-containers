@@ -92,3 +92,4 @@ fi
 #tail -F /var/log/cron.log
 echo $(date -u)
 echo "\n"
+env >> /etc/environment
