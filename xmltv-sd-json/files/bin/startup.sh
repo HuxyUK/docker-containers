@@ -29,7 +29,7 @@ TMPFILE="/tmp/${GRABBER}.xml"
 case "$(pidof ${GRABBER} | wc -w)" in
 
 0)  echo "\n"
-    echo $(date -u)
+    echo $(date)
     echo "Running startup grab:"
     if [ ! -f "/usr/local/bin/${GRABBER}" ]; then
       echo "Looking in /usr/bin for ${GRABBER}"
@@ -90,6 +90,6 @@ fi
 #echo "... Success"
 #touch /var/log/cron.log
 #tail -F /var/log/cron.log
-echo $(date -u)
+echo $(date)
 echo "\n"
 env >> /etc/environment

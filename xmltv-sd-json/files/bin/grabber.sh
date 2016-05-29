@@ -26,7 +26,7 @@ TMPFILE="/tmp/${GRABBER}.xml"
 # starting grab
 case "$(pidof ${GRABBER} | wc -w)" in
 
-0)  echo $(date -u)
+0)  echo $(date)
     echo "Running grab:"
     if [ ! -f "/usr/local/bin/${GRABBER}" ]; then
       echo "Looking in /usr/bin for ${GRABBER}"
@@ -57,5 +57,5 @@ echo "Moving tmp file to /data/${FILENAME}"
 mv -f ${TMPFILE} /data/${FILENAME}
 
 echo "... Success"
-echo $(date -u)
+echo $(date)
 echo "\n"
