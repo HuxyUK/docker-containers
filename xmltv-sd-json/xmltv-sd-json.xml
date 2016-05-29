@@ -119,7 +119,7 @@
       - Added crontab template generation.
       - Added check to see if grabber was succesful.
       - Added timestamp to logs.
-      - Used a temp file for downloads to prevent it being erased if the grabber fails. 
+      - Used a temp file for downloads to prevent existing data being erased if the grabber fails. 
       - Various bug fixes and scripts improvements.
       
       [font size=3]2016.05.27[/font]
