@@ -21,6 +21,8 @@ if [ -z "$OFFSET" ]; then
   OFFSET="0"
 fi
 
+TMPFILE="/tmp/${GRABBER}.xml"
+
 # starting grab
 case "$(pidof ${GRABBER} | wc -w)" in
 
@@ -51,8 +53,8 @@ if [ $rc != 0 ]; then
 fi
 
 #fix to stop data loss when grab fails
-echo "Moving tmp file to /data/${FILENAME}
-mv -f ${GRABBER} /data/${FILENAME}
+echo "Moving tmp file to /data/${FILENAME}"
+mv -f ${TMPFILE} /data/${FILENAME}
 
 echo "... Success"
 echo $(date -u)

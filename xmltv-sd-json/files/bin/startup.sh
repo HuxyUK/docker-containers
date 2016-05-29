@@ -58,7 +58,7 @@ fi
 
 #fix to stop data loss when grab fails
 echo "Moving tmp file to /data/${FILENAME}"
-mv -f ${GRABBER} /data/${FILENAME}
+mv -f ${TMPFILE} /data/${FILENAME}
 
 #importing custom cron tab if file exists
 echo "Checking for crontab"
