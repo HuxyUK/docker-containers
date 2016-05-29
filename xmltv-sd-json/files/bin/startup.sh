@@ -57,7 +57,7 @@ exit $rc;
 fi
 
 #fix to stop data loss when grab fails
-echo "Moving tmp file to /data/${FILENAME}
+echo "Moving tmp file to /data/${FILENAME}"
 mv -f ${GRABBER} /data/${FILENAME}
 
 #importing custom cron tab if file exists
