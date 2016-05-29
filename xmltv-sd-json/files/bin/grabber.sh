@@ -24,8 +24,7 @@ fi
 # starting grab
 case "$(pidof ${GRABBER} | wc -w)" in
 
-0)  echo "\n"
-    echo $(date -u)
+0)  echo $(date -u)
     echo "Running grab:"
     if [ ! -f "/usr/local/bin/${GRABBER}" ]; then
       echo "Looking in /usr/bin for ${GRABBER}"
