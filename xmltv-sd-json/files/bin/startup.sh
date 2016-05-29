@@ -74,6 +74,8 @@ cat <<'EOF' > ${CRONTAB}
 30 */12 * * * /usr/local/bin/grabber >> /var/log/cron.log 2>&1
 # LEAVE THIS LINE BLANK
 EOF
+  chown -R nobody:users ${CRONTAB}
+  chmod +rw ${CRONTAB}
   crontab ${CRONTAB}
   echo "Done"
 fi
