@@ -25,19 +25,20 @@ fi
 case "$(pidof ${GRABBER} | wc -w)" in
 
 0)  echo "\n"
+    echo $(date -u)
     echo "Running grab:"
     if [ ! -f "/usr/local/bin/${GRABBER}" ]; then
       echo "Looking in /usr/bin for ${GRABBER}"
       if [ -f "/usr/bin/${GRABBER}" ]; then
         echo "/usr/bin/${GRABBER} --days ${DAYS} --output ${FILENAME} --offset ${OFFSET}"
-        /usr/bin/${GRABBER} --days ${DAYS} --output /data/${FILENAME} --offset ${OFFSET}
+        /usr/bin/${GRABBER} --days ${DAYS} --output ${TMPFILE} --offset ${OFFSET}
       else
         echo "${GRABBER} not found. Exiting."
         exit 1;
       fi
     else
       echo "/usr/local/bin/${GRABBER} --days ${DAYS} --output ${FILENAME} --offset ${OFFSET}"
-      /usr/local/bin/${GRABBER} --days ${DAYS} --output /data/${FILENAME} --offset ${OFFSET}
+      /usr/local/bin/${GRABBER} --days ${DAYS} --output ${TMPFILE} --offset ${OFFSET}
     fi
     ;;
 1)  echo "Grabber already running"
@@ -50,4 +51,9 @@ if [ $rc != 0 ]; then
   exit $rc;
 fi
 
+#fix to stop data loss when grab fails
+echo "Moving tmp file to /data/${FILENAME}
+mv -f ${GRABBER} /data/${FILENAME}
+
 echo "... Success"
+echo $(date -u)

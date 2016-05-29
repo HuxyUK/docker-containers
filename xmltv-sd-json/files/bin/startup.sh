@@ -23,23 +23,26 @@ if [ -z "$OFFSET" ]; then
   OFFSET="0"
 fi
 
+TMPFILE="/tmp/${GRABBER}.xml"
+
 # starting weekly grab
 case "$(pidof ${GRABBER} | wc -w)" in
 
 0)  echo "\n"
+    echo $(date -u)
     echo "Running startup grab:"
     if [ ! -f "/usr/local/bin/${GRABBER}" ]; then
       echo "Looking in /usr/bin for ${GRABBER}"
       if [ -f "/usr/bin/${GRABBER}" ]; then
         echo "/usr/bin/${GRABBER} --days ${STARTUPDAYS} --output ${FILENAME} --offset ${OFFSET}"
-        /usr/bin/${GRABBER} --days ${STARTUPDAYS} --output /data/${FILENAME} --offset ${OFFSET}
+        /usr/bin/${GRABBER} --days ${STARTUPDAYS} --output ${TMPFILE} --offset ${OFFSET}
       else
         echo "${GRABBER} not found. Exiting."
         exit 1;
       fi
     else
       echo "/usr/local/bin/${GRABBER} --days ${STARTUPDAYS} --output ${FILENAME} --offset ${OFFSET}"
-      /usr/local/bin/${GRABBER} --days ${STARTUPDAYS} --output /data/${FILENAME} --offset ${OFFSET}
+      /usr/local/bin/${GRABBER} --days ${STARTUPDAYS} --output ${TMPFILE} --offset ${OFFSET}
     fi
     ;;
 1)  echo "Grabber already running"
@@ -52,6 +55,10 @@ if [ $rc != 0 ]; then
   echo "Grabber failed to run. Check configuration file... /data/${GRABBER}.conf"
 exit $rc;
 fi
+
+#fix to stop data loss when grab fails
+echo "Moving tmp file to /data/${FILENAME}
+mv -f ${GRABBER} /data/${FILENAME}
 
 #importing custom cron tab if file exists
 echo "Checking for crontab"
@@ -83,4 +90,5 @@ fi
 #echo "... Success"
 #touch /var/log/cron.log
 #tail -F /var/log/cron.log
+echo $(date -u)
 echo "\n"
