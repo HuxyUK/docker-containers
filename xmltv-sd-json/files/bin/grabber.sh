@@ -1,6 +1,6 @@
 #!/bin/sh
 # variables used in script
-
+echo "Launching Grabber Script!"
 if [ -z "$DAYS" ]; then
   echo "Using default number of days (1) for scan. This can be overriden with a DAYS variable."
   DAYS=1
@@ -57,3 +57,4 @@ mv -f ${GRABBER} /data/${FILENAME}
 
 echo "... Success"
 echo $(date -u)
+echo "\n"
