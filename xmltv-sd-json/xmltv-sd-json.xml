@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Container version="2">
   <Name>XMLTV Schedules Direct</Name>
-  <Beta>False</Beta>
+  <Beta>True</Beta>
   <Category>Downloaders:</Category>
   <Overview>
     An XMLTV installation based on Debian with a JSON added grabber for Schedules Direct. [br]This allows use of Schedules Direct for all supported countries.
@@ -36,7 +36,7 @@
     <Mode>bridge</Mode>
     <Publish />
   </Networking>
-  <Version>beta1</Version>
+  <Version>beta3</Version>
   <Banner>https://raw.githubusercontent.com/balloob/unraid-docker-templates/master/balloob/home-assistant-banner.png</Banner>
   <Icon>http://ftp.halifax.rwth-aachen.de/xbmc/addons/frodo/script.tvguide/icon.png</Icon>
   <Config
@@ -115,6 +115,12 @@
   <Changes>
       [center][img width='155px' src='http://d2631fvi2jdnb6.cloudfront.net/docker/limetech.png'][/center]
       [center][font size=4]Sync Change Log[/font][/center]
+      [font size=3]2016.05.29[/font]
+      - Added crontab template generation.
+      - Added check to see if grabber was succesful.
+      - Added timestamp to logs.
+      - Used a temp file for downloads to prevent it being erased if the grabber fails. 
+      - Various bug fixes and scripts improvements.
       
       [font size=3]2016.05.27[/font]
       - Initial Release based on Debian Jessie.
