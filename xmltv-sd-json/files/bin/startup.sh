@@ -1,69 +1,10 @@
-#!/bin/sh
-# start-cron.sh /usr/sbin/cron -f
-# variables used in script
+#!/bin/bash
 CRONTAB="/config/cronjobs.txt"
+source /usr/local/bin/grabber 1
 
-if [ -z "$STARTUPDAYS" ]; then
-  echo "Using default number of days (1) for scan. This can be overriden with a STARTUPDAYS variable."
-  STARTUPDAYS=1
-fi
-
-if [ -z "$FILENAME" ]; then
-  echo "Using default filename (epg.xml) for scan. This can be overriden with a FILENAME variable."
-  FILENAME="epg.xml"
-fi
-
-if [ -z "$GRABBER" ]; then
-  echo "Using default grabber (tv_grab_sd_json) for scan. This can be overriden with a GRABBER variable."
-  GRABBER="tv_grab_sd_json"
-fi
-
-if [ -z "$OFFSET" ]; then
-  echo "Using default offset duration (0) for scan. This can be overriden with a OFFSET variable."
-  OFFSET="0"
-fi
-
-TMPFILE="/tmp/${GRABBER}.xml"
-
-# starting weekly grab
-case "$(pidof ${GRABBER} | wc -w)" in
-
-0)  echo "\n"
-    echo $(date)
-    echo "Running startup grab:"
-    if [ ! -f "/usr/local/bin/${GRABBER}" ]; then
-      echo "Looking in /usr/bin for ${GRABBER}"
-      if [ -f "/usr/bin/${GRABBER}" ]; then
-        echo "/usr/bin/${GRABBER} --days ${STARTUPDAYS} --output ${FILENAME} --offset ${OFFSET}"
-        /usr/bin/${GRABBER} --days ${STARTUPDAYS} --output ${TMPFILE} --offset ${OFFSET}
-      else
-        echo "${GRABBER} not found. Exiting."
-        exit 1;
-      fi
-    else
-      echo "/usr/local/bin/${GRABBER} --days ${STARTUPDAYS} --output ${FILENAME} --offset ${OFFSET}"
-      /usr/local/bin/${GRABBER} --days ${STARTUPDAYS} --output ${TMPFILE} --offset ${OFFSET}
-    fi
-    ;;
-1)  echo "Grabber already running"
-    ;;
-esac
-
-rc=$?;
-if [ $rc != 0 ]; then
-  echo "\n"
-  echo "Grabber failed to run. Check configuration file... /data/${GRABBER}.conf"
-exit $rc;
-fi
-
-#fix to stop data loss when grab fails
-echo "Moving tmp file to /data/${FILENAME}"
-mv -f ${TMPFILE} /data/${FILENAME}
-
-#importing custom cron tab if file exists
+## importing custom cron tab if file exists
 echo "Checking for crontab"
 if [ -s $CRONTAB ]; then
-  echo "\n"
   echo "Located custom crontab..."
   echo "      Installing crontab..."
   echo $CRONTAB
@@ -87,9 +28,10 @@ EOF
   echo "Done"
 fi
 
-#echo "... Success"
-#touch /var/log/cron.log
-#tail -F /var/log/cron.log
-echo $(date)
-echo "\n"
+## update environment for cron jobs
 env >> /etc/environment
+
+## all done
+echo "********************"
+echo "* STARTUP COMPLETE *"
+echo "********************"
