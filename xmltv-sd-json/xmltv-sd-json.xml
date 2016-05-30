@@ -26,7 +26,7 @@
   </Description>
   <license>MIT</license>
   <Project>https://sourceforge.net/projects/xmltv/</Project>
-  <GitHub>github.com/HuxyUK/docker-containers/xmltv-sd-json</GitHub>
+  <GitHub>https://github.com/HuxyUK/docker-xmltv-sd-json</GitHub>
   <Repository>huxy/xmltv-sd-json</Repository>
   <Changes/>
   <BindTime>true</BindTime>
@@ -36,9 +36,9 @@
     <Mode>bridge</Mode>
     <Publish />
   </Networking>
-  <Version>beta3</Version>
-  <Banner>https://raw.githubusercontent.com/balloob/unraid-docker-templates/master/balloob/home-assistant-banner.png</Banner>
-  <Icon>http://ftp.halifax.rwth-aachen.de/xbmc/addons/frodo/script.tvguide/icon.png</Icon>
+  <Version>rc1</Version>
+  <Banner>https://raw.githubusercontent.com/HuxyUK/docker-containers/master/xmltv-sd-json/xmltv-sd-json-banner.jpg</Banner>
+  <Icon>https://raw.githubusercontent.com/HuxyUK/docker-containers/master/xmltv-sd-json/xmltv-sd-json-icon.png</Icon>
   <Config
     Type="Path"
     Name="Config Directory"
@@ -67,54 +67,58 @@
     Description="Container Path: /unraid"
     Required="false">/unraid</Config>
   <Config
-      Type="Variable"
-      Name="Output File"
-      Target="FILENAME"
-      Default="guide.xml"
-      Description="XML destination filename."
-      Mask="false"
-      Display="always"
-      Required="true">guide.xml</Config>
+    Type="Variable"
+    Name="Output File"
+    Target="FILENAME"
+    Default="guide.xml"
+    Description="XML destination filename."
+    Mask="false"
+    Display="always"
+    Required="true">guide.xml</Config>
   <Config
-      Type="Variable"
-      Name="Grabber"
-      Target="GRABBER"
-      Default="tv_grab_sd_json"
-      Description="XMLTV Grabber to run."
-      Mask="false"
-      Display="advanced"
-      Required="false">tv_grab_sd_json</Config>
+    Type="Variable"
+    Name="Grabber"
+    Target="GRABBER"
+    Default="tv_grab_sd_json"
+    Description="XMLTV Grabber to run."
+    Mask="false"
+    Display="advanced"
+    Required="false">tv_grab_sd_json</Config>
   <Config
-      Type="Variable"
-      Name="Days To Grab"
-      Target="DAYS"
-      Default=""
-      Description="Number of days to grab when script runs."
-      Mask="false"
-      Display="advanced"
-      Required="false">1</Config>
+    Type="Variable"
+    Name="Days To Grab"
+    Target="DAYS"
+    Default=""
+    Description="Number of days to grab when script runs."
+    Mask="false"
+    Display="advanced"
+    Required="false">1</Config>
   <Config
-      Type="Variable"
-      Name="Grabber Offset"
-      Target="OFFSET"
-      Default="0"
-      Description="Offset to apply when script runs."
-      Mask="false"
-      Display="advanced"
-      Required="false">0</Config>      
+    Type="Variable"
+    Name="Grabber Offset"
+    Target="OFFSET"
+    Default="0"
+    Description="Offset to apply when script runs."
+    Mask="false"
+    Display="advanced"
+    Required="false">0</Config>      
   <Config
-      Type="Variable"
-      Name="Days To Grab at Startup"
-      Target="STARTUPDAYS"
-      Default="1"
-      Description="Number of days to grab when docker starts."
-      Mask="false"
-      Display="advanced"
-      Required="false">1</Config>
+    Type="Variable"
+    Name="Days To Grab at Startup"
+    Target="STARTUPDAYS"
+    Default="1"
+    Description="Number of days to grab when docker starts."
+    Mask="false"
+    Display="advanced"
+    Required="false">1</Config>
   
   <Changes>
       [center][img width='155px' src='http://d2631fvi2jdnb6.cloudfront.net/docker/limetech.png'][/center]
       [center][font size=4]Sync Change Log[/font][/center]
+      [font size=3]2016.05.30[/font]
+      - Lots of refactoring behind the scenes. 
+      - JSON grabber now updated on every start.
+
       [font size=3]2016.05.29[/font]
       - Added crontab template generation.
       - Added check to see if grabber was succesful.
