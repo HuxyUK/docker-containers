@@ -1,13 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Container version="2">
+<?xml version="1.0" encoding="UTF-8"?>
+<Container>
   <Name>XMLTV Schedules Direct</Name>
-  <Beta>True</Beta>
+  <license>MIT</license>
+  <Support>https://hub.docker.com/r/huxy/xmltv-sd-json/</Support>
   <Category>Downloaders:</Category>
-  <Overview>
-    An XMLTV installation based on Debian with a JSON added grabber for Schedules Direct. [br]This allows use of Schedules Direct for all supported countries.
-    For those not in the know; XMLTV is a set of programs to process TV (tvguide) listings and manage your TV viewing, storing listings in an XML format.[br][br]
-    The JSON grabber provided with this docker is tv_grab_sd_json. Recently, it has been officially accepted into the XMLTV project.[br]
-  </Overview>
   <Description>
     Provides an XMLTV installation with a JSON Schedules Direct script installed.[br]
     XMLTV is a tool used to generate XML based EPG's. This template is specifically designed for JSON and Schedules Direct.[br]&#13;
@@ -24,21 +20,53 @@
     [b]Custom CRONTAB: [/b]&#13;
     By default the grabber will run via cron twice a day. This can easily be changed or additional jobs added by editing the cronjobs.txt file in the config directory and restarting.
   </Description>
-  <license>MIT</license>
-  <Project>https://sourceforge.net/projects/xmltv/</Project>
-  <GitHub>https://github.com/HuxyUK/docker-xmltv-sd-json</GitHub>
+  <Overview>
+    An XMLTV installation based on Debian (including cron) with a JSON added grabber for Schedules Direct. [br]This allows use of Schedules Direct for all supported countries.
+    For those not in the know; XMLTV is a set of programs to process TV (tvguide) listings and manage your TV viewing, storing listings in an XML format.[br][br]
+    The JSON grabber currently provided with this docker is tv_grab_sd_json. Recently, it has been officially accepted into the XMLTV project.[br]
+  </Overview>
+  <Registry>https://hub.docker.com/r/huxy/xmltv-sd-json/</Registry>
   <Repository>huxy/xmltv-sd-json</Repository>
-  <Changes/>
+  <Project>https://sourceforge.net/projects/xmltv/</Project>
   <BindTime>true</BindTime>
   <Privileged>false</Privileged>
-  <Environment/>
   <Networking>
     <Mode>bridge</Mode>
-    <Publish/>
   </Networking>
-  <Version>rc1</Version>
-  <Banner>https://raw.githubusercontent.com/HuxyUK/docker-containers/master/xmltv-sd-json/xmltv-sd-json-banner.jpg</Banner>
-  <Icon>https://raw.githubusercontent.com/HuxyUK/docker-containers/master/xmltv-sd-json/xmltv-sd-json-icon.png</Icon>
+  <Data>
+    <Volume type="appdata">
+      <HostDir>/mnt/user/appdata/XMLTVSchedulesDirect</HostDir>
+      <ContainerDir>/config</ContainerDir>
+      <Mode>rw</Mode>
+    </Volume>
+    <Volume>
+      <HostDir>/mnt/user/appdata/TVGuideXML</HostDir>
+      <ContainerDir>/data</ContainerDir>
+      <Mode>rw</Mode>
+    </Volume>
+  </Data>
+  <Environment>
+    <Variable>
+      <Name>FILENAME</Name>
+      <Value>guide.xml</Value>
+    </Variable>
+    <Variable>
+      <Name>GRABBER</Name>
+      <Value>tv_grab_sd_json</Value>
+    </Variable>
+    <Variable>
+      <Name>DAYS</Name>
+      <Value>1</Value>
+    </Variable>
+    <Variable>
+      <Name>STARTUPDAYS</Name>
+      <Value>2</Value>
+    </Variable>
+    <Variable>
+      <Name>OFFSET</Name>
+      <Value>0</Value>
+    </Variable>
+  </Environment>
   <Config
     Type="Path"
     Name="Config Directory"
@@ -101,7 +129,7 @@
     Description="Offset to apply when script runs."
     Mask="false"
     Display="advanced"
-    Required="false">0</Config>      
+    Required="false">0</Config>
   <Config
     Type="Variable"
     Name="Days To Grab at Startup"
@@ -111,22 +139,23 @@
     Mask="false"
     Display="advanced"
     Required="false">1</Config>
-  
   <Changes>
-      [center][img width='155px' src='http://d2631fvi2jdnb6.cloudfront.net/docker/limetech.png'][/center]
-      [center][font size=4]Sync Change Log[/font][/center]
-      [font size=3]2016.05.30[/font]
-      - Lots of refactoring behind the scenes. 
-      - JSON grabber now updated on every start.
+    [center][img width='155px' src='https://raw.githubusercontent.com/HuxyUK/docker-containers/master/xmltv-sd-json/xmltv-sd-json-banner.jpg'][/center]
+    [center][font size=4]Change Log[/font][/center]
+    [font size=3]2016.05.30[/font]
+    - Lots of refactoring behind the scenes.
+    - JSON grabber now updated on every start.
 
-      [font size=3]2016.05.29[/font]
-      - Added crontab template generation.
-      - Added check to see if grabber was succesful.
-      - Added timestamp to logs.
-      - Used a temp file for downloads to prevent existing data being erased if the grabber fails. 
-      - Various bug fixes and scripts improvements.
-      
-      [font size=3]2016.05.27[/font]
-      - Initial Release based on Debian Jessie.
+    [font size=3]2016.05.29[/font]
+    - Added crontab template generation.
+    - Added check to see if grabber was succesful.
+    - Added timestamp to logs.
+    - Used a temp file for downloads to prevent existing data being erased if the grabber fails.
+    - Various bug fixes and scripts improvements.
+
+    [font size=3]2016.05.27[/font]
+    - Initial Release based on Debian Jessie.
   </Changes>
+  <Banner>https://raw.githubusercontent.com/HuxyUK/docker-containers/master/xmltv-sd-json/xmltv-sd-json-banner.jpg</Banner>
+  <Icon>https://raw.githubusercontent.com/HuxyUK/docker-containers/master/xmltv-sd-json/xmltv-sd-json-icon.png</Icon>
 </Container>
