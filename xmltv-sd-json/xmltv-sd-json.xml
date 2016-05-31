@@ -2,7 +2,7 @@
 <Container>
   <Name>XMLTV Schedules Direct</Name>
   <license>MIT</license>
-  <Support>https://hub.docker.com/r/huxy/xmltv-sd-json/</Support>
+  <Support>https://lime-technology.com/forum/index.php?topic=49457.0</Support>
   <Category>Downloaders:</Category>
   <Description>
     Provides an XMLTV installation with a JSON Schedules Direct script installed.[br]
