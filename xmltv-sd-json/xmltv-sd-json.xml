@@ -34,7 +34,7 @@
     <Mode>bridge</Mode>
   </Networking>
   <Data>
-    <Volume type="appdata">
+    <Volume>
       <HostDir>/mnt/user/appdata/XMLTVSchedulesDirect</HostDir>
       <ContainerDir>/config</ContainerDir>
       <Mode>rw</Mode>
