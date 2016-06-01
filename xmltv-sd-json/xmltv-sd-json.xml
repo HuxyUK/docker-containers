@@ -67,78 +67,14 @@
       <Value>0</Value>
     </Variable>
   </Environment>
-  <Config
-    Type="Path"
-    Name="Config Directory"
-    Target="/config"
-    Default="/mnt/user/appdata/XMLTVSchedulesDirect"
-    Mode="rw"
-    Display="always"
-    Description="XMLTV configuration, including caches and cronjobs."
-    Required="true">/mnt/user/appdata/XMLTVSchedulesDirect</Config>
-  <Config
-    Type="Path"
-    Name="EPG Data Directory"
-    Target="/data"
-    Default="/mnt/user/appdata/TVGuideXML"
-    Mode="rw"
-    Display="always"
-    Description="EPG export destination."
-    Required="true">/mnt/user/appdata/TVGuideXML</Config>
-  <Config
-    Type="Path"
-    Name="unRAID Share Path"
-    Target="/unraid"
-    Default="/mnt/user"
-    Mode="rw"
-    Display="hidden"
-    Description="Container Path: /unraid"
-    Required="false">/unraid</Config>
-  <Config
-    Type="Variable"
-    Name="Output File"
-    Target="FILENAME"
-    Default="guide.xml"
-    Description="XML destination filename."
-    Mask="false"
-    Display="always"
-    Required="true">guide.xml</Config>
-  <Config
-    Type="Variable"
-    Name="Grabber"
-    Target="GRABBER"
-    Default="tv_grab_sd_json"
-    Description="XMLTV Grabber to run."
-    Mask="false"
-    Display="advanced"
-    Required="false">tv_grab_sd_json</Config>
-  <Config
-    Type="Variable"
-    Name="Days To Grab"
-    Target="DAYS"
-    Default=""
-    Description="Number of days to grab when script runs."
-    Mask="false"
-    Display="advanced"
-    Required="false">1</Config>
-  <Config
-    Type="Variable"
-    Name="Grabber Offset"
-    Target="OFFSET"
-    Default="0"
-    Description="Offset to apply when script runs."
-    Mask="false"
-    Display="advanced"
-    Required="false">0</Config>
-  <Config
-    Type="Variable"
-    Name="Days To Grab at Startup"
-    Target="STARTUPDAYS"
-    Default="1"
-    Description="Number of days to grab when docker starts."
-    Mask="false"
-    Display="advanced"
-    Required="false">1</Config>
+  <Config Type="Path" Name="Config Directory" Target="/config" Default="/mnt/user/appdata/XMLTVSchedulesDirect" Mode="rw" Display="always"  Description="XMLTV configuration, including caches and cronjobs." Required="true">/mnt/user/appdata/XMLTVSchedulesDirect</Config>
+  <Config Type="Path" Name="EPG Data Directory" Target="/data" Default="/mnt/user/appdata/TVGuideXML" Mode="rw" Display="always" Description="EPG export destination." Required="true">/mnt/user/appdata/TVGuideXML</Config>
+  <Config Type="Path" Name="unRAID Share Path" Target="/unraid" Default="/mnt/user" Mode="rw" Display="hidden" Description="Container Path: /unraid" Required="false">/unraid</Config>
+  <Config Type="Variable" Name="Output File" Target="FILENAME" Default="guide.xml" Description="XML destination filename." Mask="false" Display="always" Required="true">guide.xml</Config>
+  <Config Type="Variable" Name="Grabber" Target="GRABBER" Default="tv_grab_sd_json" Description="XMLTV Grabber to run." Mask="false" Display="advanced" Required="false">tv_grab_sd_json</Config>
+  <Config Type="Variable" Name="Days To Grab" Target="DAYS" Default="" Description="Number of days to grab when script runs." Mask="false" Display="advanced" Required="false">1</Config>
+  <Config Type="Variable" Name="Grabber Offset" Target="OFFSET" Default="0" Description="Offset to apply when script runs." Mask="false" Display="advanced" Required="false">0</Config>
+  <Config Type="Variable" Name="Days To Grab at Startup" Target="STARTUPDAYS" Default="1" Description="Number of days to grab when docker starts." Mask="false" Display="advanced" Required="false">1</Config>
   <Changes>
     [center][img width='155px' src='https://raw.githubusercontent.com/HuxyUK/docker-containers/master/xmltv-sd-json/xmltv-sd-json-banner.jpg'][/center]
     [center][font size=4]Change Log[/font][/center]
