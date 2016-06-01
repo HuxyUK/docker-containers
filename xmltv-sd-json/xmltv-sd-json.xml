@@ -78,6 +78,9 @@
   <Changes>
     [center][img width='155px' src='https://raw.githubusercontent.com/HuxyUK/docker-containers/master/xmltv-sd-json/xmltv-sd-json-banner.jpg'][/center]
     [center][font size=4]Change Log[/font][/center]
+    [font size=3]2016.06.01[/font]
+    - Unix socket support
+    
     [font size=3]2016.05.30[/font]
     - Lots of refactoring behind the scenes.
     - JSON grabber now updated on every start.
