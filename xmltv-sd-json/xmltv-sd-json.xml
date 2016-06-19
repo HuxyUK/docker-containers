@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>XMLTV Schedules Direct</Name>
+  <Repository>huxy/xmltv-sd-json</Repository>
+  <Registry>https://hub.docker.com/r/huxy/xmltv-sd-json/</Registry>
+  <Network>bridge</Network>
+  <Privileged>false</Privileged>
+  <license>MIT</license>
+  <Support>https://lime-technology.com/forum/index.php?topic=49457.0</Support>
+  <Project>https://sourceforge.net/projects/xmltv/</Project>
+  <BindTime>true</BindTime>  
+  <Overview>
+    An XMLTV installation based on Debian (including cron) with a JSON added grabber for Schedules Direct. [br]This allows use of Schedules Direct for all supported countries.
+    For those not in the know; XMLTV is a set of programs to process TV (tvguide) listings and manage your TV viewing, storing listings in an XML format.[br][br]
+    The JSON grabber currently provided with this docker is tv_grab_sd_json. Recently, it has been officially accepted into the XMLTV project.[br]
+  </Overview>
+  <Category>Downloaders:</Category>
+  <WebUI/>
+  <TemplateURL/>
+  <Icon>https://raw.githubusercontent.com/HuxyUK/docker-containers/master/xmltv-sd-json/xmltv-sd-json-icon.png</Icon>
+  <ExtraParams/>
+  <Description>
+    Provides an XMLTV installation with a JSON Schedules Direct script installed.[br]
+    XMLTV is a tool used to generate XML based EPG's. This template is specifically designed for JSON and Schedules Direct.[br]&#13;
+    https://sourceforge.net/projects/xmltv/[br]&#13;
+    [b][span style=\'color: #E80000;\']Directions:[/span][/b][br]&#13;
+    [b]/config[/b] : This is where XMLTV will store it\'s cache and configuration.[br][br]&#13;
+    [b]/data[/b] : This is the output directory for the EPG data that has been scrapped.[br][br]&#13;
+    [b][span style='color: #FFCC00 Features:[/span][/b][br]&#13;
+    [b]--[/b] Automatically runs a grab on startup, with it's own day count i.e. STARTUPDAYS.[br]&#13;
+    [b]--[/b] Specify the number of days used when running the grabber script with DAYS.[br]&#13;
+    [b]--[/b] Specify the offset used with running the grabber script with OFFSET.[br]&#13;
+    [b]--[/b] Specify the grabber used with GRABBER. It will default to tv_grab_sd_json if not specified.[br][br]&#13;
+    [b][span style='color: #FFCC00;']Cron:[/span][/b][br]
+    [b]Custom CRONTAB: [/b]&#13;
+    By default the grabber will run via cron twice a day. This can easily be changed or additional jobs added by editing the cronjobs.txt file in the config directory and restarting.
+  </Description>
+  <Networking>
+    <Mode>bridge</Mode>
+    <Publish/>
+  </Networking>
+  <Data>
+    <Volume>
+      <HostDir>/mnt/user/appdata/XMLTVSchedulesDirect</HostDir>
+      <ContainerDir>/config</ContainerDir>
+      <Mode>rw</Mode>
+    </Volume>
+    <Volume>
+      <HostDir>/mnt/user/appdata/TVGuideXML</HostDir>
+      <ContainerDir>/data</ContainerDir>
+      <Mode>rw</Mode>
+    </Volume>
+  </Data>
+  <Environment>
+    <Variable>
+      <Name>FILENAME</Name>
+      <Value>guide.xml</Value>
+    </Variable>
+    <Variable>
+      <Name>GRABBER</Name>
+      <Value>tv_grab_sd_json</Value>
+    </Variable>
+    <Variable>
+      <Name>DAYS</Name>
+      <Value>1</Value>
+    </Variable>
+    <Variable>
+      <Name>STARTUPDAYS</Name>
+      <Value>2</Value>
+    </Variable>
+    <Variable>
+      <Name>OFFSET</Name>
+      <Value>0</Value>
+    </Variable>
+  </Environment>
+  <Config Type="Path" Name="Config Directory" Target="/config" Default="/mnt/user/appdata/XMLTVSchedulesDirect" Mode="rw" Display="always"  Description="XMLTV configuration, including caches and cronjobs." Required="true">/mnt/user/appdata/XMLTVSchedulesDirect</Config>
+  <Config Type="Path" Name="EPG Data Directory" Target="/data" Default="/mnt/user/appdata/TVGuideXML" Mode="rw" Display="always" Description="EPG export destination." Required="true">/mnt/user/appdata/TVGuideXML</Config>
+  <Config Type="Path" Name="unRAID Share Path" Target="/unraid" Default="/mnt/user" Mode="rw" Display="hidden" Description="Container Path: /unraid" Required="false">/unraid</Config>
+  <Config Type="Variable" Name="Output File" Target="FILENAME" Default="guide.xml" Description="XML destination filename." Mask="false" Display="always" Required="true">guide.xml</Config>
+  <Config Type="Variable" Name="Grabber" Target="GRABBER" Default="tv_grab_sd_json" Description="XMLTV Grabber to run." Mask="false" Display="advanced" Required="false">tv_grab_sd_json</Config>
+  <Config Type="Variable" Name="Days To Grab" Target="DAYS" Default="" Description="Number of days to grab when script runs." Mask="false" Display="advanced" Required="false">1</Config>
+  <Config Type="Variable" Name="Grabber Offset" Target="OFFSET" Default="0" Description="Offset to apply when script runs." Mask="false" Display="advanced" Required="false">0</Config>
+  <Config Type="Variable" Name="Days To Grab at Startup" Target="STARTUPDAYS" Default="1" Description="Number of days to grab when docker starts." Mask="false" Display="advanced" Required="false">1</Config>
+  <Changes>
+    [center][img width='303px' src='https://raw.githubusercontent.com/HuxyUK/docker-containers/master/xmltv-sd-json/xmltv-sd-json-banner.jpg'][/center]
+    [center][font size=4]Change Log[/font][/center]
+    [font size=3]2016.06.17[/font]
+    - Added DateTime::Format::DateParse.
+    - Support for updated tv_grab_sd_json grabber.
+    
+    [font size=3]2016.06.01[/font]
+    - Unix socket support
+    
+    [font size=3]2016.05.30[/font]
+    - Lots of refactoring behind the scenes.
+    - JSON grabber now updated on every start.
+
+    [font size=3]2016.05.29[/font]
+    - Added crontab template generation.
+    - Added check to see if grabber was succesful.
+    - Added timestamp to logs.
+    - Used a temp file for downloads to prevent existing data being erased if the grabber fails.
+    - Various bug fixes and scripts improvements.
+
+    [font size=3]2016.05.27[/font]
+    - Initial Release based on Debian Jessie.
+  </Changes>
+  <Banner>https://raw.githubusercontent.com/HuxyUK/docker-containers/master/xmltv-sd-json/xmltv-sd-json-banner.jpg</Banner>
+</Container>
